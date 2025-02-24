@@ -1,26 +1,34 @@
 import Inspect from 'vite-plugin-inspect';//https://github.com/antfu-collective/vite-plugin-inspect
 import Path from 'path';//для псевдонимов путей
-import { resolve } from 'path';//для многостраничной сборки
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';//https://github.com/FatehAK/vite-plugin-image-optimizer
+import { defineConfig } from 'vite';
 
-console.log(Path.resolve(__dirname, './src/assets'));
 
-export default {
-  plugins: [
-    Inspect(),
-  ],
-  resolve: {//для псевдонимов путей @ вместо ./src/assets
-    alias: {
-      '@': Path.resolve(__dirname, './src'),
-      '@js': Path.resolve(__dirname, './src/js'),
-      '@img': Path.resolve(__dirname, './src/img'),
-    }
-  },
-  build: {//для многостраничной сборки
-    rollupOptions: {
-      input: {
-        main: resolve(__dirname, 'index.html'),
-        login: resolve(__dirname, 'login/index.html')
+export default defineConfig(() => {
+  return {
+    plugins: [
+      Inspect(),
+      ViteImageOptimizer({
+        png: {
+          // https://sharp.pixelplumbing.com/api-output#png
+          quality: 70,
+        },
+        jpeg: {
+          // https://sharp.pixelplumbing.com/api-output#jpeg
+          quality: 40,
+        },
+        jpg: {
+          // https://sharp.pixelplumbing.com/api-output#jpeg
+          quality: 40,
+        },
+      }),
+    ],
+    resolve: {//для псевдонимов путей @ вместо ./src/assets
+      alias: {
+        '@': Path.resolve(__dirname, './src'),
+        '@js': Path.resolve(__dirname, './src/js'),
+        '@img': Path.resolve(__dirname, './src/img'),
       }
-    }
-  }
-}
+    },
+  };
+});
