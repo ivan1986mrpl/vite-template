@@ -1,6 +1,6 @@
-import '@/03.css';
+import '@/css/03.css';
 
 
-import './js/module/addDate';
+import '@js/module/addDate';
 
 
