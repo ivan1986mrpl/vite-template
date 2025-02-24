@@ -1,0 +1,7 @@
+body {
+    height: 1500px;
+    background-color: grey;
+    .title {
+        color: orange;
+    }
+}
