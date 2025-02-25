@@ -20,7 +20,10 @@ export default defineConfig(() => {
         jpg: {
           // https://sharp.pixelplumbing.com/api-output#jpeg
           quality: 40,
-        },
+        },       
+        webp: {
+          quality: 40,					
+				}
       }),
     ],
     resolve: {//для псевдонимов путей @ вместо ./src/assets
