@@ -8,7 +8,6 @@ export default {
   ],
 }```
 
-- http://localhost:5173/__inspect/
 
 ## псевдонимы путей
 ```import Path from 'path'//для псевдонимов путей
@@ -50,3 +49,5 @@ export default {
     }
   }
 }```
+
+в самой начальной стадии разработки, есть минификация изображений и avtoprefixer
